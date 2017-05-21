@@ -2,6 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="addressbook-web-tests_main" target="1.8" />
+      <module name="addressbook-web-tests_test" target="1.8" />
+      <module name="java_pft-addressbook-web-tests_main" target="1.8" />
+      <module name="java_pft-addressbook-web-tests_test" target="1.8" />
       <module name="sendbox_main" target="1.8" />
       <module name="sendbox_test" target="1.8" />
     </bytecodeTargetLevel>
