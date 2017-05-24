@@ -62,7 +62,10 @@ public class ContactHelper extends HelperBase{
   }
 
   public void deleteContactModification() {
-    click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
 
+  public void okeyTest(){
+    wd.switchTo().alert().accept();
   }
 }
