@@ -17,10 +17,5 @@ public class ContactDeletionTests extends TestBase {
     app.getContactHelper().okeyTest();
     app.getContactHelper().goToContactPage();
 
-    //app.getContactHelper().goToContactPage();
-    //app.getContactHelper().selectContact();
-    //app.getContactHelper().initContactModification();
-   // app.getContactHelper().deleteContactModification();
-    //app.getContactHelper().goToContactPage();
-  }
+   }
 }
