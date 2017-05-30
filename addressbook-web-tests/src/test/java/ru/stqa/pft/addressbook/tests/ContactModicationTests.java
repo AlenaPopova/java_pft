@@ -12,11 +12,12 @@ public class ContactModicationTests extends TestBase{
     app.getContactHelper().goToContactPage();
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillContactForm(new ContactData("Emma", "Watson", "1/4 Street", "ew@ya.ru"));
+    app.getContactHelper().fillContactForm(new ContactData("Emma", "Watson", "1/4 Street", "ew@ya.ru", null),false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();
   }
 }
+
 
 
 
