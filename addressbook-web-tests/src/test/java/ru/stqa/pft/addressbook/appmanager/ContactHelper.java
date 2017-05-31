@@ -77,4 +77,15 @@ public class ContactHelper extends HelperBase{
   public void okeyTest(){
     wd.switchTo().alert().accept();
   }
+
+  public void createContact(ContactData contact, boolean creation) {
+    initContactCreation();
+    fillContactForm(contact,creation);
+    submitContactCreation();
+    returnToContactPage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
