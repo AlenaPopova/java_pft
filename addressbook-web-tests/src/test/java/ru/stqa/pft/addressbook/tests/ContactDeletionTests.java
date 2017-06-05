@@ -20,7 +20,7 @@ public class ContactDeletionTests extends TestBase {
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Mike", "Jordan", "2 Street", "mj@ya.ru", null),true);
     }
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(0);
     app.getContactHelper().deleteContactModification();
     app.getContactHelper().okeyTest();
     app.getNavigationHelper().goToContactPage();
