@@ -22,14 +22,16 @@ public class ContactDeletionTests extends TestBase {
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Mike", "Jordan", "2 Street", "mj@ya.ru", null),true);
     }
-    //int before = app.getContactHelper().getContactCount();
+
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(0);
     app.getContactHelper().deleteContactModification();
     app.getContactHelper().okeyTest();
     app.getNavigationHelper().goToContactPage();
     List<ContactData> after = app.getContactHelper().getContactList();
-    //int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after.size(), before.size()-1);
+
+    before.remove(before.size()-1);
+    Assert.assertEquals(before, after);
    }
 }

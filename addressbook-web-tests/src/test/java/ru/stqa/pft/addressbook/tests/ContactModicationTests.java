@@ -23,7 +23,7 @@ public class ContactModicationTests extends TestBase{
     //int before = app.getContactHelper().getContactCount();
     app.getContactHelper().selectContact(before.size()-3);
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillContactForm(new ContactData("Emma", "Watson", "1/4 Street", "ew@ya.ru", null),false);
+    app.getContactHelper().fillContactForm(new ContactData("Harry", "Potter", "1/4 Street", "ew@ya.ru", null),false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();
     List<ContactData> after = app.getContactHelper().getContactList();
