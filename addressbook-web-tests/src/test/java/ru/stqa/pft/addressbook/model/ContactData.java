@@ -40,7 +40,6 @@ public class ContactData {
     return "ContactData{" +
             "name='" + name + '\'' +
             ", surname='" + surname + '\'' +
-            ", mail='" + mail + '\'' +
             '}';
   }
 
@@ -52,15 +51,13 @@ public class ContactData {
     ContactData that = (ContactData) o;
 
     if (name != null ? !name.equals(that.name) : that.name != null) return false;
-    if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
-    return mail != null ? mail.equals(that.mail) : that.mail == null;
+    return surname != null ? surname.equals(that.surname) : that.surname == null;
   }
 
   @Override
   public int hashCode() {
     int result = name != null ? name.hashCode() : 0;
     result = 31 * result + (surname != null ? surname.hashCode() : 0);
-    result = 31 * result + (mail != null ? mail.hashCode() : 0);
     return result;
   }
 }
