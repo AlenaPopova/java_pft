@@ -22,6 +22,7 @@ public class ContactModicationTests extends TestBase{
     }
     List<ContactData> before = app.getContactHelper().getContactList();
     //int before = app.getContactHelper().getContactCount();
+    System.out.println(before.get(before.size()-1).getId());
     app.getContactHelper().selectContact(before.size()-1);
     app.getContactHelper().initContactModification();
 
@@ -32,6 +33,7 @@ public class ContactModicationTests extends TestBase{
     app.getContactHelper().returnToContactPage();
     List<ContactData> after = app.getContactHelper().getContactList();
     //int after = app.getContactHelper().getContactCount();
+    System.out.println(after.get(after.size() - 1).getId());
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(before.size()-1);
