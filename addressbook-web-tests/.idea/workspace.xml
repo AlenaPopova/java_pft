@@ -29,8 +29,8 @@
       <file leaf-file-name="ContactModicationTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModicationTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+            <state relative-caret-position="289">
+              <caret line="29" column="128" lean-forward="true" selection-start-line="29" selection-start-column="128" selection-end-line="29" selection-end-column="128" />
               <folding />
             </state>
           </provider>
@@ -39,11 +39,11 @@
       <file leaf-file-name="ContactHelper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="69" column="78" lean-forward="false" selection-start-line="69" selection-start-column="78" selection-end-line="69" selection-end-column="78" />
+            <state relative-caret-position="317">
+              <caret line="106" column="81" lean-forward="true" selection-start-line="106" selection-start-column="81" selection-end-line="106" selection-end-column="81" />
               <folding>
                 <element signature="method#createContact#0;class#ContactHelper#0" expanded="false" />
-                <element signature="e#2888#2901#0" expanded="true" />
+                <element signature="e#2889#2902#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -412,8 +412,8 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/ContactData.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactCreationTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/TestBase.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModicationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java" />
       </list>
     </option>
   </component>
@@ -969,21 +969,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ContactCreationTests - 2017.06.07 at 18h 08m 12s.xml">
-      <configuration name="ContactCreationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactCreationTests - 2017.06.07 at 18h 11m 45s.xml">
-      <configuration name="ContactCreationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactDeletionTests - 2017.06.07 at 18h 11m 21s.xml">
-      <configuration name="ContactDeletionTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModicationTests - 2017.06.07 at 18h 09m 28s.xml">
-      <configuration name="ContactModicationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModicationTests - 2017.06.07 at 18h 11m 33s.xml">
-      <configuration name="ContactModicationTests" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="ContactModicationTests - 2017.06.08 at 14h 50m 18s.xml">
       <configuration name="ContactModicationTests" configurationId="TestNG" />
     </history-entry>
@@ -997,6 +982,21 @@
       <configuration name="ContactModicationTests" configurationId="TestNG" />
     </history-entry>
     <history-entry file="ContactModicationTests - 2017.06.08 at 15h 20m 44s.xml">
+      <configuration name="ContactModicationTests" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactModicationTests - 2017.06.08 at 15h 29m 36s.xml">
+      <configuration name="ContactModicationTests" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactModicationTests - 2017.06.08 at 15h 32m 31s.xml">
+      <configuration name="ContactModicationTests" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactModicationTests - 2017.06.08 at 15h 33m 18s.xml">
+      <configuration name="ContactModicationTests" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactModicationTests - 2017.06.08 at 15h 35m 00s.xml">
+      <configuration name="ContactModicationTests" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactModicationTests - 2017.06.08 at 15h 37m 19s.xml">
       <configuration name="ContactModicationTests" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -1053,8 +1053,14 @@
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModicationTests.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="41" />
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1240,19 +1246,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        <state relative-caret-position="289">
+          <caret line="29" column="128" lean-forward="true" selection-start-line="29" selection-start-column="128" selection-end-line="29" selection-end-column="128" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="69" column="78" lean-forward="false" selection-start-line="69" selection-start-column="78" selection-end-line="69" selection-end-column="78" />
+        <state relative-caret-position="317">
+          <caret line="106" column="81" lean-forward="true" selection-start-line="106" selection-start-column="81" selection-end-line="106" selection-end-column="81" />
           <folding>
             <element signature="method#createContact#0;class#ContactHelper#0" expanded="false" />
-            <element signature="e#2888#2901#0" expanded="true" />
+            <element signature="e#2889#2902#0" expanded="true" />
           </folding>
         </state>
       </provider>

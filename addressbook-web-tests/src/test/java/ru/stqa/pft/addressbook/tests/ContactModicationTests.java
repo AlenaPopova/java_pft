@@ -23,17 +23,17 @@ public class ContactModicationTests extends TestBase{
     }
     List<ContactData> before = app.getContactHelper().getContactList();
 
-    //System.out.println(before.get(before.size()-1).getId());
-    //app.getContactHelper().selectContact(before.size()-1);
+
+    app.getContactHelper().selectContact(before.size()-1); // выбираем последний элемент в списке
     app.getContactHelper().initContactModification(before.size()-1);
 
-    ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Emma", "Potter", "1/4 Street", "ew@ya.ru", null);
+    ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Emma", "McColl", "1/4 Street", "ew@ya.ru", null);
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();
     List<ContactData> after = app.getContactHelper().getContactList();
 
-  //  System.out.println(after.get(after.size() - 1).getId());
+
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(before.size()-1);
