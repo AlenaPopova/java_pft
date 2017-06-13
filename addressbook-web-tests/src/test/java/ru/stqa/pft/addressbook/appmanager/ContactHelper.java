@@ -122,7 +122,7 @@ public class ContactHelper extends HelperBase {
             String name = element.findElement(By.xpath(".//td[3]")).getText(); //обращаемся к строке td к полю по его индексу
             String surname = element.findElement(By.xpath(".//td[2]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            ContactData contact = new ContactData(id, name, surname, null, null, null);
+            ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname);
             contacts.add(contact);
         }
         return contacts;
