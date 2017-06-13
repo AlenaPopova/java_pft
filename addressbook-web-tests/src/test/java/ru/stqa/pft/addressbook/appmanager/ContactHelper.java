@@ -10,7 +10,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Алёна on 23.05.2017.
@@ -62,13 +64,18 @@ public class ContactHelper extends HelperBase {
 
     public void selectContact(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 
     }
 
-    public void initContactModification(int index) {
+    public void initContactModification(int id) {
 
         // click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-        wd.findElements(By.cssSelector("img[alt=\"Edit\"]")).get(index).click();
+        //wd.findElements(By.cssSelector("img[alt=\"Edit\"]")).get(index).click();
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 
     public void submitContactModification() {
@@ -91,9 +98,9 @@ public class ContactHelper extends HelperBase {
         returnToContactPage();
     }
 
-    public void modify(int index, ContactData contact) {
-        selectContact(index); // выбираем последний элемент в списке
-        initContactModification(index);
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
+        initContactModification(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
         returnToContactPage();
@@ -104,7 +111,13 @@ public class ContactHelper extends HelperBase {
         deleteContactModification();
         okeyTest();
         returnToContactPage();
+    }
 
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
+        deleteContactModification();
+        okeyTest();
+        returnToContactPage();
     }
 
     public boolean isThereAContact() {
@@ -127,4 +140,19 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
+
+    public Set<ContactData> allContact() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String name = element.findElement(By.xpath(".//td[3]")).getText(); //обращаемся к строке td к полю по его индексу
+            String surname = element.findElement(By.xpath(".//td[2]")).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+            ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname);
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+
+
 }
