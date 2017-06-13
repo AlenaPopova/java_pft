@@ -91,6 +91,14 @@ public class ContactHelper extends HelperBase {
         returnToContactPage();
     }
 
+    public void modifyContact(int index, ContactData contact) {
+        selectContact(index); // выбираем последний элемент в списке
+        initContactModification(index);
+        fillContactForm(contact, false);
+        submitContactModification();
+        returnToContactPage();
+    }
+
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
