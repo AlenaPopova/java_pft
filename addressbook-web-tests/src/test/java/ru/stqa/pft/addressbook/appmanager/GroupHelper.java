@@ -7,7 +7,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Алёна on 23.05.2017.
@@ -40,8 +42,12 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
-    public void selectGroup(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
+    //public void selectGroup(int index) {
+      //  wd.findElements(By.name("selected[]")).get(index).click();
+   // }
+
+    public void selectGroupById(int id) {
+        wd.findElement(By.cssSelector("input[value='"+ id +"']")).click();
 
     }
 
@@ -60,18 +66,19 @@ public class GroupHelper extends HelperBase {
         returntoGroupPage();
     }
 
-    public void modify(int index, GroupData group) {
-        selectGroup(index);// редактирование  последнего элемента
+    public void modify(GroupData group) {
+        selectGroupById(group.getId());
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
         returntoGroupPage();
     }
 
-    public void delete(int index) {
-       selectGroup(index);
-       deleteSelectedGroups();
-       returntoGroupPage();
+
+    public void delete(GroupData group) {
+        selectGroupById(group.getId());
+        deleteSelectedGroups();
+        returntoGroupPage();
     }
 
     public boolean isThereAGroup() {
@@ -93,4 +100,18 @@ public class GroupHelper extends HelperBase {
         }
         return groups;
     }
+
+    public Set<GroupData> all() {
+        Set<GroupData> groups = new HashSet<GroupData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            GroupData group = new GroupData().withId(id).withName(name);
+            groups.add(group);
+        }
+        return groups;
+    }
+
+
 }
