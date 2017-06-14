@@ -5,10 +5,12 @@ public class ContactData {
   private  String name;
   private  String surname;
   private  String adres;
-
-
+  private  String homePhone;
+  private  String mobilePhone;
+  private  String workPhone;
   private  String mail;
-  private String group;
+  private  String group;
+
 
 
 
@@ -34,6 +36,18 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   @Override
@@ -94,5 +108,21 @@ public class ContactData {
     this.group = group;
     return this;
   }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
 }
+
 
