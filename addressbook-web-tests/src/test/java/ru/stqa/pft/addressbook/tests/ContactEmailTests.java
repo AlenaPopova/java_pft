@@ -34,4 +34,8 @@ public class ContactEmailTests extends TestBase {
         assertThat(contact.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
 
     }
+
+    public static String cleaned(String email) {
+        return email.replaceAll("",""); // в regex указывается что заменять, в replacement  - на что заменять. в данном примере заменяем на пустую строку
+    }
 }

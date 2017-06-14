@@ -43,6 +43,7 @@ public class ContactPhoneTests extends TestBase {
     }
 
     public static String cleaned(String phone) {
-        return phone.replaceAll("\\s","").replaceAll("[-()]","");
+        return phone.replaceAll("\\s","").replaceAll("[-()]","");// в regex указывается что заменять, в replacement  - на что заменять. в данном примере заменяем на пустую строку
+                                                                                                        // "[-()]" - каждый из символов, указанных в [], заменяется на пустую строку
     }
 }
