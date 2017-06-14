@@ -141,8 +141,8 @@ public class ContactHelper extends HelperBase {
             String surname = element.findElement(By.xpath(".//td[2]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
-            String[] phones = allPhones.split("\n");
-            ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname).withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]);
+           // String[] phones = allPhones.split("\n");
+            ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname).withAllPhones(allPhones);
             contacts.add(contact);
         }
         return contacts;
