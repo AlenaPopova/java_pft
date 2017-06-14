@@ -1,19 +1,13 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Алёна on 23.05.2017.
@@ -43,7 +37,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getSurname());
         type(By.name("address"), contactData.getAdres());
-        type(By.name("email"), contactData.getMail());
+        type(By.name("email"), contactData.getEmail());
         //type(By.name("new_group"), contactData.getGroup());
         type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobilePhone());
@@ -69,7 +63,7 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void initContactModification(int id) {
+    public void initContactModificationById(int id) {
 
         // click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
         //wd.findElements(By.cssSelector("img[alt=\"Edit\"]")).get(index).click();
@@ -98,7 +92,7 @@ public class ContactHelper extends HelperBase {
 
     public void modify(ContactData contact) {
         selectContactById(contact.getId());
-        initContactModification(contact.getId());
+        initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
         returnToContactPage();
@@ -150,13 +144,18 @@ public class ContactHelper extends HelperBase {
 
 
     public ContactData infoFromEditForm(ContactData contact) {
-        initContactModification(contact.getId());
+        initContactModificationById(contact.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
         String homephone = wd.findElement(By.name("home")).getAttribute("value");
         String mobilephone = wd.findElement(By.name("mobile")).getAttribute("value");
         String workphone = wd.findElement(By.name("work")).getAttribute("value");
+        String email1 = wd.findElement(By.name("email")).getAttribute("value");
+        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
-        return new ContactData().withId(contact.getId()).withName(firstname).withSurname(lastname).withHomePhone(homephone).withMobilePhone(mobilephone).withWorkPhone(workphone);
+        return new ContactData().withId(contact.getId()).withName(firstname).withSurname(lastname)
+                .withHomePhone(homephone).withMobilePhone(mobilephone).withWorkPhone(workphone)
+                .withEmail(email1).withEmail2(email2).withEmail3(email3);
     }
 }
