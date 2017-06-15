@@ -8,12 +8,13 @@ public class ContactData {
   private  String homePhone;
   private  String mobilePhone;
   private  String workPhone;
+  private  String allPhones;
   private  String email;
   private  String email2;
   private  String email3;
   private  String allEmails;
   private  String group;
-  private  String allPhones;
+
 
 
   public int getId() {
@@ -67,7 +68,6 @@ public class ContactData {
   public String getAllPhones() {
     return allPhones;
   }
-
 
 
 

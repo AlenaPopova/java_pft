@@ -137,9 +137,9 @@ public class ContactHelper extends HelperBase {
             String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
             // String[] phones = allPhones.split("\n");
             String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
-            String[] emails = allEmails.split("\n");
+            //String[] emails = allEmails.split("\n");
             ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname).withAllPhones(allPhones)
-                    .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2]);
+                    .withAllEmails(allEmails);
             contacts.add(contact);
         }
         return contacts;
