@@ -32,7 +32,7 @@ public class ContactAdressTests extends TestBase {
         app.goTo().contactPage();
         ContactData contact = app.contact().allContact().iterator().next(); // загружаем множество контактов
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+        assertThat(contact.getAllAdress(), equalTo(contactInfoFromEditForm.getAllAdress()));
     }
 
 }

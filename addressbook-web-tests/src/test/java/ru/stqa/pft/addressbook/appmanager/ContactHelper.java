@@ -41,7 +41,7 @@ public class ContactHelper extends HelperBase {
         //type(By.name("new_group"), contactData.getGroup());
         type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobilePhone());
-        type(By.name("work"), contactData.getMobilePhone());
+        type(By.name("work"), contactData.getWorkPhone());
     }
 
     public void type(By locator, String text) {
@@ -98,7 +98,6 @@ public class ContactHelper extends HelperBase {
         returnToContactPage();
     }
 
-
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         deleteContactModification();
@@ -138,13 +137,13 @@ public class ContactHelper extends HelperBase {
             // String[] phones = allPhones.split("\n");
             String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
             //String[] emails = allEmails.split("\n");
+
             String allAddress = element.findElement(By.xpath(".//td[4]")).getText();
-            String[] address = allAddress.split("\n");
             ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname)
                     .withAllPhones(allPhones)
                     .withAllEmails(allEmails)
-                    .withAdres(address[0])
-                    .withAdres(address[1]);
+                    .withAdres(allAddress);
+
             contacts.add(contact);
         }
         return contacts;
@@ -161,7 +160,7 @@ public class ContactHelper extends HelperBase {
         String email1 = wd.findElement(By.name("email")).getAttribute("value");
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email3 = wd.findElement(By.name("email3")).getAttribute("value");
-        String address = wd.findElement(By.name("address")).getAttribute("value");
+        String address = wd.findElement(By.tagName("textarea")).getText();
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withName(firstname).withSurname(lastname)
                 .withAdres(address)
