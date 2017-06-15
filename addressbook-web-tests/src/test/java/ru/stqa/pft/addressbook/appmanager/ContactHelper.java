@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,12 +43,24 @@ public class ContactHelper extends HelperBase {
         type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("work"), contactData.getWorkPhone());
+        attach(By.name("photo"), contactData.getPhoto());
     }
 
     public void type(By locator, String text) {
         click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
+        if (text != null){
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (! text.equals(existingText)){
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
+        }
+    }
+
+    public void attach(By locator, File file) {
+       if (file != null){
+           wd.findElement(locator).sendKeys(file.getAbsolutePath()); // преобразование относительного пути к файлу в абсолютный используется getAbsolutePath()
+       }
     }
 
     public void initContactCreation() {
