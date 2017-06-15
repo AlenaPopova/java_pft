@@ -1,24 +1,34 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
+    @DataProvider
+    public Iterator<Object[]> validGroups() {
+        List<Object[]> list = new ArrayList<Object[]>();
+        list.add(new Object[]{new ContactData().withName("Paris").withSurname("Hilton")});
+        list.add(new Object[]{new ContactData().withName("Aria").withSurname("Stark")});
+        list.add(new Object[]{new ContactData().withName("Elton").withSurname("John")});
+        return list.iterator();
+    }
 
-
-    @Test
-    public void testContactCreation() {
-
+    // Чтобы в результатах теста в консоли отображались нужные поля, необходимо изменить метод public String toString() в ContactData
+    @Test(dataProvider = "validGroups")
+    public void testContactCreation(ContactData contact) {
         app.goTo().contactPage();
         Contacts before = app.contact().allContact();
         File photo = new File("src/test/resourses/cat.png");
-        ContactData contact = new ContactData().withName("Harry").withSurname("Potter").withAdres("1/2 Street").withPhoto(photo);
         app.contact().create(contact, true);
         assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
         Contacts after = app.contact().allContact();
@@ -27,7 +37,7 @@ public class ContactCreationTests extends TestBase {
     }
 
     @Test
-    public void testCurrentDir(){
+    public void testCurrentDir() {
         File currentDir = new File(".");
         System.out.println(currentDir.getAbsolutePath());
         File photo = new File("src/test/resourses/cat.png");
