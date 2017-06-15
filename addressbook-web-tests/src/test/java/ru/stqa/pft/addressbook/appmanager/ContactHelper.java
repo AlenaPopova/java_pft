@@ -36,7 +36,7 @@ public class ContactHelper extends HelperBase {
 
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getSurname());
-        type(By.name("address"), contactData.getAdres());
+        type(By.name("address"), contactData.getAddress());
         type(By.name("email"), contactData.getEmail());
         //type(By.name("new_group"), contactData.getGroup());
         type(By.name("home"), contactData.getHomePhone());
@@ -138,8 +138,13 @@ public class ContactHelper extends HelperBase {
             // String[] phones = allPhones.split("\n");
             String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
             //String[] emails = allEmails.split("\n");
-            ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname).withAllPhones(allPhones)
-                    .withAllEmails(allEmails);
+            String allAddress = element.findElement(By.xpath(".//td[4]")).getText();
+            String[] address = allAddress.split("\n");
+            ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname)
+                    .withAllPhones(allPhones)
+                    .withAllEmails(allEmails)
+                    .withAdres(address[0])
+                    .withAdres(address[1]);
             contacts.add(contact);
         }
         return contacts;
@@ -156,8 +161,10 @@ public class ContactHelper extends HelperBase {
         String email1 = wd.findElement(By.name("email")).getAttribute("value");
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withName(firstname).withSurname(lastname)
+                .withAdres(address)
                 .withHomePhone(homephone).withMobilePhone(mobilephone).withWorkPhone(workphone)
                 .withEmail(email1).withEmail2(email2).withEmail3(email3);
     }

@@ -40,5 +40,5 @@ public class ContactEmailTests extends TestBase {
                 .collect(Collectors.joining("\n"));
     }
 
-    
+
 }
