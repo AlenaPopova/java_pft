@@ -173,7 +173,7 @@ public class ContactHelper extends HelperBase {
         String email1 = wd.findElement(By.name("email")).getAttribute("value");
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email3 = wd.findElement(By.name("email3")).getAttribute("value");
-        String address = wd.findElement(By.tagName("textarea")).getText();
+        String address = wd.findElement(By.name("address")).getText();
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withName(firstname).withSurname(lastname)
                 .withAdres(address)
