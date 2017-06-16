@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -9,29 +11,29 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
+
     @DataProvider
-    public Iterator<Object[]> validGroups() throws IOException {
-        List<Object[]> list = new ArrayList<Object[]>();
-       // list.add(new Object[]{new ContactData().withName("Paris").withSurname("Hilton")});
-       // list.add(new Object[]{new ContactData().withName("Aria").withSurname("Stark")});
-       // list.add(new Object[]{new ContactData().withName("Elton").withSurname("John")});
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resourses/contacts.csv")));
+    public Iterator<Object[]> validContactsFromJSON() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resourses/contacts.json")));
+        String json = "";
         String line = reader.readLine();
-        while (line !=null) {
-            String[] split = line.split(";");
-            list.add(new Object[] {new ContactData().withName(split[0]).withSurname(split[1])});
+        while (line != null) {
+            json += line;
             line = reader.readLine();
         }
-        return list.iterator();
+        Gson gson = new Gson();
+        List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
+        return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
 
     // Чтобы в результатах теста в консоли отображались нужные поля, необходимо изменить метод public String toString() в ContactData
-    @Test(dataProvider = "validGroups")
+    @Test(dataProvider = "validContactsFromJSON") // указывается в каком формате загружать файл
     public void testContactCreation(ContactData contact) {
         app.goTo().contactPage();
         Contacts before = app.contact().allContact();
