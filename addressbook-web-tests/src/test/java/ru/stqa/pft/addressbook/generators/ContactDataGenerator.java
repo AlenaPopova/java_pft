@@ -54,18 +54,18 @@ public class ContactDataGenerator {
     private void saveAsJSON(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();// пропускает все поля, которые не помечены аннотацией @Expose в ContactData
         String json = gson.toJson(contacts);
-        Writer writer = new FileWriter(file);
-        writer.write(json);
-        writer.close();
+        try (Writer writer = new FileWriter(file)){
+            writer.write(json);
+        }
     }
 
     private static void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
         System.out.println(new File(".").getAbsolutePath());
-        Writer writer = new FileWriter(file); //открываем файл для записи
-        for (ContactData contact : contacts) {
-            writer.write(String.format("%s;%s\n", contact.getName(), contact.getSurname()));
+        try (Writer writer = new FileWriter(file)) { //открываем файл для записи
+            for (ContactData contact : contacts) {
+                writer.write(String.format("%s;%s\n", contact.getName(), contact.getSurname()));
+            }
         }
-        writer.close();
     }
 
     private static List<ContactData> generateContacts(int count) {
