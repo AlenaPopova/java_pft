@@ -22,7 +22,7 @@ public class ContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContactsFromJSON() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resourses/contacts.json")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
@@ -55,7 +55,7 @@ public class ContactCreationTests extends TestBase {
     public void testCurrentDir() {
         File currentDir = new File(".");
         System.out.println(currentDir.getAbsolutePath());
-        File photo = new File("src/test/resourses/cat.png");
+        File photo = new File("src/test/resources/cat.png");
         System.out.println(photo.getAbsolutePath());
         System.out.println(photo.exists());
     }
