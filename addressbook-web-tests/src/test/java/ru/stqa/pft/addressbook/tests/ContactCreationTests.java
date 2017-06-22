@@ -2,6 +2,8 @@ package ru.stqa.pft.addressbook.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -37,6 +39,7 @@ public class ContactCreationTests extends TestBase {
     // Чтобы в результатах теста в консоли отображались нужные поля, необходимо изменить метод public String toString() в ContactData
     @Test(dataProvider = "validContactsFromJSON") // указывается в каком формате загружать файл
     public void testContactCreation(ContactData contact) {
+
         app.goTo().contactPage();
         Contacts before = app.contact().allContact();
         File photo = new File("src/test/resourses/cat.png");
@@ -45,6 +48,7 @@ public class ContactCreationTests extends TestBase {
         Contacts after = app.contact().allContact();
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+
     }
 
     @Test
