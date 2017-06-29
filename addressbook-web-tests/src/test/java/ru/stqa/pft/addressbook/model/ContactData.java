@@ -1,27 +1,66 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Table;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.File;
-
+@Entity
+@javax.persistence.Table(name = "addressbook")
 public class ContactData {
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
-  @Expose
+
+  @Column(name = "firstname")
   private  String name;
-  @Expose
+
+  @Column(name = "lastname")
   private  String surname;
+
+  @Transient // поле не будет извлекаться из БД
   private  String address;
+
+  @Transient
   private  String allAdress;
+
+  @Column(name = "home")
+  @Type(type="text") // преобразование в текстовый тип
   private  String homePhone;
+
+  @Column(name = "mobile")
+  @Type(type="text") // преобразование в текстовый тип
   private  String mobilePhone;
+
+  @Column(name = "work")
+  @Type(type="text") // преобразование в текстовый тип
   private  String workPhone;
+
+  @Transient
   private  String allPhones;
+
+  @Transient
   private  String email;
+
+  @Transient
   private  String email2;
+
+  @Transient
   private  String email3;
+
+  @Transient
   private  String allEmails;
+
+  @Transient
   private  String group;
-  private File photo;
+
+  @Column(name = "photo")
+  @Type(type="text") // преобразование в текстовый тип
+  private String photo;
 
 
 
@@ -82,7 +121,7 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
 
@@ -188,7 +227,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 }
