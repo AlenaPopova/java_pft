@@ -121,7 +121,12 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return new File(photo);
+    if (photo == null) {
+      return null;
+    } else {
+      return new File(photo);
+    }
+
   }
 
 
@@ -189,7 +194,6 @@ public class ContactData {
     this.email2 = email2;
     return this;
   }
-
 
   public ContactData withEmail3(String email3) {
     this.email3 = email3;
