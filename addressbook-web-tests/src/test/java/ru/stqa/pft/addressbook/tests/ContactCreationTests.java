@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class ContactCreationTests extends TestBase {
     // Чтобы в результатах теста в консоли отображались нужные поля, необходимо изменить метод public String toString() в ContactData
     @Test(dataProvider = "validContactsFromJSON") // указывается в каком формате загружать файл
     public void testContactCreation(ContactData contact) {
-
+        Groups groups = app.db().groups();
         app.goTo().contactPage();
         Contacts before = app.db().contacts();
         File photo = new File("src/test/resourses/cat.png");

@@ -4,11 +4,11 @@ import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.Table;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @javax.persistence.Table(name = "addressbook")
 public class ContactData {
@@ -55,12 +55,13 @@ public class ContactData {
   @Transient
   private  String allEmails;
 
-  @Transient
-  private  String group;
-
   @Column(name = "photo")
   @Type(type="text") // преобразование в текстовый тип
   private String photo;
+
+  @ManyToMany (fetch = FetchType.EAGER)
+  @JoinTable (name = "address_in_groups", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
 
 
@@ -100,10 +101,6 @@ public class ContactData {
     return allEmails;
   }
 
-  public String getGroup() {
-    return group;
-  }
-
   public String getHomePhone() {
     return homePhone;
   }
@@ -128,8 +125,6 @@ public class ContactData {
     }
 
   }
-
-
 
   @Override
   public String toString() {
@@ -200,9 +195,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   public ContactData withHomePhone(String homePhone) {
