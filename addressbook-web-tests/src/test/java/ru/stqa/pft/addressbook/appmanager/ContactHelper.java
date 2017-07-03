@@ -1,10 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,13 +48,22 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("work"), contactData.getWorkPhone());
         attach(By.name("photo"), contactData.getPhoto());
+
+        if (creation) {
+            if (contactData.getGroups().size() > 0) {
+                Assert.assertTrue(contactData.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            }
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
     }
 
     public void type(By locator, String text) {
         click(locator);
-        if (text != null){
+        if (text != null) {
             String existingText = wd.findElement(locator).getAttribute("value");
-            if (! text.equals(existingText)){
+            if (!text.equals(existingText)) {
                 wd.findElement(locator).clear();
                 wd.findElement(locator).sendKeys(text);
             }
@@ -58,9 +71,9 @@ public class ContactHelper extends HelperBase {
     }
 
     public void attach(By locator, File file) {
-       if (file != null){
-           wd.findElement(locator).sendKeys(file.getAbsolutePath()); // преобразование относительного пути к файлу в абсолютный используется getAbsolutePath()
-       }
+        if (file != null) {
+            wd.findElement(locator).sendKeys(file.getAbsolutePath()); // преобразование относительного пути к файлу в абсолютный используется getAbsolutePath()
+        }
     }
 
     public void initContactCreation() {
@@ -159,7 +172,6 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -176,5 +188,23 @@ public class ContactHelper extends HelperBase {
                 .withAdres(address)
                 .withHomePhone(homephone).withMobilePhone(mobilephone).withWorkPhone(workphone)
                 .withEmail(email1).withEmail2(email2).withEmail3(email3);
+    }
+
+    public void addContactToGroup(int id) {
+        wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
+        click(By.cssSelector("input[name='add']"));
+    }
+
+    public void selectContact(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
+    public void deleteContactFromGroup(ContactData contact) {
+        selectContactById(contact.getId());
+        click(By.name("remove"));
+    }
+
+    public void selectDeletedGroupFromList(GroupData group) {
+        new Select(wd.findElement(By.xpath("//select[@name = 'group']"))).selectByVisibleText(group.getName());
     }
 }
