@@ -22,6 +22,7 @@ public class ContactAdditionToGroup extends TestBase {
         }
 
         app.goTo().contactPage();
+        Groups groups = app.db().groups();
         if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData().withName("Elton").withSurname("John").withAdres("5 Avenue"), true);
         }
@@ -29,20 +30,39 @@ public class ContactAdditionToGroup extends TestBase {
 
     @Test
     public void testAddContactToGroup() {
-        app.goTo().contactPage();
-        if (app.db().contactNotInGroup().size() == 0) {
-            app.goTo().groupPage();
-            app.group().create(new GroupData().withName("test group"));
-            app.goTo().contactPage();
+        int contactId = 0;
+        boolean completed = false;
+        Groups beforeAdditionGroups = null;
+        Groups beforeAddedGroups = null;
+        Groups existedGroups = app.db().groups();
+        Contacts contacts = app.db().contacts();
+
+        for (ContactData editedContact : contacts) {
+            beforeAdditionGroups = editedContact.getGroups();
+            GroupData newGroup = app.contact().getGroupToAddition(existedGroups, editedContact);
+            if (newGroup != null) {
+                app.contact().addition(editedContact, newGroup);
+                contactId = editedContact.getId();
+                beforeAddedGroups = beforeAdditionGroups.withAdded(newGroup);
+                completed = true;
+                break;
+            }
         }
-        Contacts before = app.db().contacts();
-        app.goTo().contactPage();
-        Groups group = app.db().groups();
-        ContactData modifiedContact = app.db().contactNotInGroup().iterator().next();
-        GroupData addedGroup = group.iterator().next();
-        app.contact().selectContact(modifiedContact.getId());
-        app.contact().addContactToGroup(addedGroup.getId());
-        Contacts after = app.db().contacts();
-        MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.withOut(modifiedContact).withAdded(modifiedContact.inGroup(addedGroup))));
+        if (!completed) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test4").withHeader("test4").withFooter("test4"));
+            Groups extendedGroups = app.db().groups();
+            GroupData lastAddedGroup = extendedGroups.stream()
+                    .max((g1, g2) -> Integer.compare(g1.getId(), g2.getId())).get();
+            ContactData contact = contacts.iterator().next();
+            contactId = contact.getId();
+            app.contact().addition(contact, lastAddedGroup);
+            beforeAddedGroups = beforeAdditionGroups.withAdded(lastAddedGroup);
+        }
+        Groups groupAfter = app.db().contactById(contactId).getGroups();
+        MatcherAssert.assertThat(groupAfter, CoreMatchers.equalTo(beforeAddedGroups));
     }
 }
+
+
+

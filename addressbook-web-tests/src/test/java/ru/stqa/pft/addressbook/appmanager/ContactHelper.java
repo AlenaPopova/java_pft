@@ -9,10 +9,13 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ru.stqa.pft.addressbook.tests.TestBase.app;
 
 /**
  * Created by Алёна on 23.05.2017.
@@ -80,11 +83,13 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-
     public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 
     }
+
+    private void SelectedGroupById(String id) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(id);}
 
     public void initContactModificationById(int id) {
 
@@ -190,21 +195,42 @@ public class ContactHelper extends HelperBase {
                 .withEmail(email1).withEmail2(email2).withEmail3(email3);
     }
 
-    public void addContactToGroup(int id) {
-        wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
-        click(By.cssSelector("input[name='add']"));
-    }
 
-    public void selectContact(int id) {
-        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-    }
-
-    public void deleteContactFromGroup(ContactData contact) {
+   private Contacts contactCache = null;
+    public void deleteFromGroup(ContactData contact, GroupData group) {
+        app.goTo().contactPage();
+        SelectedGroupById(String.valueOf(group.getId()));
         selectContactById(contact.getId());
         click(By.name("remove"));
+        app.goTo().contactPage();
+        SelectedGroupById("");
+       contactCache = null;
+        app.goTo().contactPage();
     }
 
-    public void selectDeletedGroupFromList(GroupData group) {
-        new Select(wd.findElement(By.xpath("//select[@name = 'group']"))).selectByVisibleText(group.getName());
+
+    public void addition(ContactData contact, GroupData group) {
+        app.goTo().contactPage();
+        selectContactById(contact.getId());
+        addContactToGroup(group);
+        contactCache = null;
+        app.goTo().contactPage();
     }
+   private void addContactToGroup(GroupData group) {
+       new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+       click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
+   }
+
+    public GroupData getGroupToAddition(Groups groups, ContactData contact){
+        Groups beforeAdditionGroups = contact.getGroups();
+        for (GroupData group :groups) {
+            if (!beforeAdditionGroups.contains(group)) {
+                return group;
+            }
+        }
+        return null;
+    }
+
 }
+
+

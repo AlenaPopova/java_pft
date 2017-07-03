@@ -45,7 +45,6 @@ public class DbHelper {
         return new Contacts(result);
     }
 
-
     public ContactData contactById(int id) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -55,26 +54,4 @@ public class DbHelper {
         return contact;
     }
 
-    public Contacts contactInGroup() {
-        Contacts result = new Contacts();
-        Contacts contacts = contacts();
-        for (ContactData contact : contacts) {
-            if (contact.getGroups().size() > 0) {
-                result.add(contact);
-            }
-        }
-        return new Contacts(result);
-    }
-
-    public Contacts contactNotInGroup() {
-        Contacts result = new Contacts();
-        Groups groupsFull = groups();
-        Contacts contactsFull = contacts();
-        for (ContactData contact : contactsFull) {
-            if (contact.getGroups().size() < groupsFull.size()) {
-                result.add(contact);
-            }
-        }
-        return new Contacts(result);
-    }
 }

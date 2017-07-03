@@ -23,36 +23,27 @@ public class DeletionContactFromGroup extends TestBase {
         }
 
         app.goTo().contactPage();
+        Groups group = app.db().groups();
         if (app.db().contacts().size() == 0) {
-            app.contact().create(new ContactData().withName("Elton").withSurname("John").withAdres("5 Avenue"), true);
-        }
-
-        if (app.db().contactInGroup().size() == 0) {
-            app.goTo().contactPage();
-            Groups group = app.db().groups();
-            ContactData modifiedContact = app.db().contactInGroup().iterator().next();
-            GroupData addedGroup = group.iterator().next();
-            app.contact().selectContactById(modifiedContact.getId());
-            app.contact().addContactToGroup(addedGroup.getId());
+            if (app.db().contacts().size() == 0) {
+                app.contact().create(new ContactData().withName("Elton").withSurname("John").withAdres("5 Avenue"), true);
+            } else {
+                ContactData contact = app.db().contacts().iterator().next();
+                if (contact.getGroups().size() == 0) {
+                    contact.inGroup(group.iterator().next());
+                }
+            }
         }
     }
 
     @Test
     public void testDeletionContactFromGroup() {
-        app.goTo().contactPage();
-        Groups group = app.db().groups();
-        Contacts before = app.db().contacts();
-        app.goTo().contactPage();
-        for (GroupData groups : group) {
-            app.contact().selectDeletedGroupFromList(groups);
-        }
-        Contacts contacts = app.db().contacts();
-        ContactData initContact = app.db().contactById(contacts.iterator().next().getId());
-        app.goTo().contactPage();
-        app.contact().deleteContactFromGroup(initContact);
-        Contacts after = app.db().contacts();
-        ContactData contactFromDb = app.db().contactById(initContact.getId());
-        MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.withOut(initContact).withAdded(contactFromDb)));
+        ContactData contact =app.db().contacts().iterator().next();
+        Groups before = contact.getGroups();
+        GroupData deletedGroup = before.iterator().next();
+        app.contact().deleteFromGroup(contact,deletedGroup);
+        Groups after=app.db().contactById(contact.getId()).getGroups();
+        MatcherAssert.assertThat(after,CoreMatchers.equalTo(before.withOut(deletedGroup)));
     }
 
 
