@@ -58,8 +58,8 @@ public class ApplicationManager {
 
 
 
-  public WebDriver getDriver() {
-    if (wd==null){
+  public WebDriver getDriver() { // ленивая инициализация
+    if (wd==null){ // если драйвер не проинициализирован, то начинается цикл
       if (Objects.equals(browser, BrowserType.FIREFOX)) {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
       } else if (Objects.equals(browser, BrowserType.CHROME)) {
@@ -67,8 +67,7 @@ public class ApplicationManager {
       } else if (Objects.equals(browser, BrowserType.IE)) {
         wd = new InternetExplorerDriver();
       }
-
-      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS); // если уже проинициализирован драйвер
       wd.get(properties.getProperty("web.baseUrl"));
     }
     return wd;
