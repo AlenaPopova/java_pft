@@ -11,6 +11,9 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:3.4.0'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
     compile 'commons-net:commons-net:3.4'
+    compile 'org.subethamail:subethasmtp:3.1.7'
+    compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
 
 }
 
