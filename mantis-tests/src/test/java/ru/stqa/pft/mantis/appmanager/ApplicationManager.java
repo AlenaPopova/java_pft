@@ -8,6 +8,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,6 +27,9 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
+    private NavigationHelper navigationHelper;
+    private ResertPasswordHelper resetPassword;
+    private DbHelper db;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -36,7 +40,6 @@ public class ApplicationManager {
         String target = System.getProperty("target", "local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     }
-
 
     public void stop() {
         if (wd != null) {
@@ -66,6 +69,12 @@ public class ApplicationManager {
         return ftp;
     }
 
+    public DbHelper db() {
+        if (db == null) {
+            db = new DbHelper(this);
+        }
+        return db;
+    }
 
     public WebDriver getDriver() { // ленивая инициализация
         if (wd == null) { // если драйвер не проинициализирован, то начинается цикл
@@ -82,18 +91,32 @@ public class ApplicationManager {
         return wd;
     }
 
-    public MailHelper mail(){
-        if (mailHelper == null){
+    public MailHelper mail() {
+        if (mailHelper == null) {
             mailHelper = new MailHelper(this);
         }
         return mailHelper;
     }
 
-    public JamesHelper james(){
+    public JamesHelper james() {
         if (jamesHelper == null) {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
+    }
+
+    public ResertPasswordHelper resetPassword() {
+        if (resetPassword == null) {
+            resetPassword = new ResertPasswordHelper(this);
+        }
+        return resetPassword;
+    }
+
+    public NavigationHelper goTo() {
+        if (navigationHelper == null) {
+            navigationHelper = new NavigationHelper(this);
+        }
+        return navigationHelper;
     }
 }
 
