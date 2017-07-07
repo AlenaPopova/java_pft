@@ -28,19 +28,19 @@ public class ResertPassword extends TestBase {
         app.goTo().login("administrator", "root");
         app.goTo().manage(); //нажатие на "Управление"
         app.goTo().usersManage(); //"Нажатие на Управление пользователями"
-        //UserData user = app.db().users().iterator().next();// Выбор пользователя из базы
-        //app.resetPassword().select(user.getUsername());
-        String username="user1499257457781";
-        app.resetPassword().select(username);
+        UserData user = app.db().users().iterator().next();// Выбор пользователя из базы
+        app.resetPassword().select(user.getUsername());
+        //String username="user1499257457781";
+        app.resetPassword().select(user.getUsername());
         app.resetPassword().resert(); // нажатие на "Сбросить пароль"
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         //String email = user+"@localhost.localdomain";
-        String email = username+"@localhost.localdomain";
-        String confirmationLink = findConfirmationLink(mailMessages, email);
+        String email = user+"@localhost.localdomain";
+        String confirmationLink = findConfirmationLink(mailMessages, email); // полчаем ссылку для смены пароля
         String newPassword = String.valueOf(System.currentTimeMillis());
         app.resetPassword().finish(confirmationLink, newPassword);
-        Assert.assertTrue(app.newSession().login(username, newPassword));
-       // Assert.assertTrue(app.newSession().login(user.getUsername(), newPassword));
+       // Assert.assertTrue(app.newSession().login(username, newPassword));
+       Assert.assertTrue(app.newSession().login(user.getUsername(), newPassword));
     }
 
     protected String findConfirmationLink(List<MailMessage> mailMessages, String email) {

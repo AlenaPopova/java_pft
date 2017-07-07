@@ -8,6 +8,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.stqa.pft.mantis.model.UserData;
 import ru.stqa.pft.mantis.model.Users;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +36,32 @@ public class DbHelper {
         return new Users(result);
     }
 
+    public String getUserName() {
+        Connection conn = null;
+        List<String> result = new ArrayList<>();
 
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugtracker?user=root&password=");
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select username from UserData");
+
+            while (rs.next()) {
+                result.add(rs.getString("username"));
+            }
+            rs.close();
+            st.close();
+            conn.close();
+            return result.get(1);
+
+        } catch (SQLException ex) {
+
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+            return null;
+        }
+
+    }
 }
 
 

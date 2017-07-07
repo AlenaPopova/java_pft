@@ -17,8 +17,8 @@ public class ResertPasswordHelper extends HelperBase {
     }
 
     public void select(String user){
-        //click(By.linkText(user));
-        click(By.linkText("user1499257457781"));
+        click(By.linkText(user));
+       // click(By.linkText("user1499257457781"));
     }
 
 
@@ -31,7 +31,8 @@ public class ResertPasswordHelper extends HelperBase {
         wd.get(confirmationLink);
         type(By.name("password"), password);
         type(By.name("password_confirm"), password);
-        click(By.xpath("//button[@type='submit']"));
+        //click(By.xpath("//button[@type='submit']"));
+        click(By.cssSelector("input[type=submit]"));
 
     }
 }
