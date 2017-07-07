@@ -8,7 +8,7 @@ import javax.persistence.Id;
  * Created by popovaa on 07.07.2017.
  */
 @Entity
-@javax.persistence.Table(name = "bugtracker")
+@javax.persistence.Table(name = "mantis_user_table") //название таблицы в бд
 public class UserData {
     @Id
     @Column(name = "id")
@@ -47,5 +47,23 @@ public class UserData {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        UserData userData = (UserData) o;
+
+        if (id != userData.id) return false;
+        if (username != null ? !username.equals(userData.username) : userData.username != null) return false;
+        return email != null ? email.equals(userData.email) : userData.email == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        return result;
+    }
 }

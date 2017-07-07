@@ -17,9 +17,9 @@ public class ResertPasswordHelper extends HelperBase {
     }
 
     public void select(String user){
-        click(By.linkText(user));
+        //click(By.linkText(user));
+        click(By.linkText("user1499257457781"));
     }
-       // UserData user = app.db().users().iterator().next();
 
 
     public void resert() {
