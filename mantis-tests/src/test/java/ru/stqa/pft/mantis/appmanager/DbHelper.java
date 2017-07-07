@@ -43,7 +43,7 @@ public class DbHelper {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugtracker?user=root&password=");
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select username from UserData");
+            ResultSet rs = st.executeQuery("select username from mantis_user_table where username<>'administrator'");
 
             while (rs.next()) {
                 result.add(rs.getString("username"));
