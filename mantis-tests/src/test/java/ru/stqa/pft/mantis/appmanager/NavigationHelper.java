@@ -55,7 +55,7 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void usersManage() {
-        click(By.linkText("Управление пользователями"));
+        click(By.linkText("Manage Users"));
 
     }
 

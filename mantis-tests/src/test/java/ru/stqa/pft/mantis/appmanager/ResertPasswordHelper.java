@@ -23,7 +23,7 @@ public class ResertPasswordHelper extends HelperBase {
 
 
     public void resert() {
-        click(By.xpath("//input[@value='Сбросить пароль']"));
+        click(By.xpath("//input[@value='Reset Password']"));
 
     }
 
@@ -31,8 +31,7 @@ public class ResertPasswordHelper extends HelperBase {
         wd.get(confirmationLink);
         type(By.name("password"), password);
         type(By.name("password_confirm"), password);
-        //click(By.xpath("//button[@type='submit']"));
-        click(By.cssSelector("input[type=submit]"));
+        click(By.xpath("//button[@type='submit']"));
 
     }
 }
