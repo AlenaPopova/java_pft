@@ -20,15 +20,15 @@ public class ApplicationManager {
 
     private final Properties properties;
     private WebDriver wd;
-
     private String browser;
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
     private NavigationHelper navigationHelper;
-    private ResertPasswordHelper resetPassword;
+    private ResetPasswordHelper resetPassword;
     private DbHelper db;
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -104,9 +104,9 @@ public class ApplicationManager {
         return jamesHelper;
     }
 
-    public ResertPasswordHelper resetPassword() {
+    public ResetPasswordHelper resetPassword() {
         if (resetPassword == null) {
-            resetPassword = new ResertPasswordHelper(this);
+            resetPassword = new ResetPasswordHelper(this);
         }
         return resetPassword;
     }
@@ -116,6 +116,13 @@ public class ApplicationManager {
             navigationHelper = new NavigationHelper(this);
         }
         return navigationHelper;
+    }
+
+    public SoapHelper soap() {
+        if (soapHelper == null) {
+            soapHelper = new SoapHelper(this);
+        }
+        return soapHelper;
     }
 }
 

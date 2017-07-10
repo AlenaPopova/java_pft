@@ -7,11 +7,11 @@ import ru.stqa.pft.mantis.model.UserData;
 /**
  * Created by popovaa on 06.07.2017.
  */
-public class ResertPasswordHelper extends HelperBase {
+public class ResetPasswordHelper extends HelperBase {
     private ApplicationManager app;
     private WebDriver wd;
 
-    public ResertPasswordHelper(ApplicationManager app) {
+    public ResetPasswordHelper(ApplicationManager app) {
         super(app);
         wd = app.getDriver();
     }

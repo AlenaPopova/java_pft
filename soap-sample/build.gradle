@@ -17,6 +17,7 @@ buildscript{
     }
     dependencies {
         classpath 'no.nils:wsdl2java:0.10'
+
     }
 }
 apply plugin: 'no.nils.wsdl2java'
