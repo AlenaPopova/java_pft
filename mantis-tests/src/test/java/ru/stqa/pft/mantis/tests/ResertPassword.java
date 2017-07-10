@@ -35,7 +35,7 @@ public class ResertPassword extends TestBase {
         //String username="user1499257457781";
         //app.resetPassword().select(user.getUsername());
         app.resetPassword().resert(); // нажатие на "Сбросить пароль"
-        List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
+        List<MailMessage> mailMessages = app.mail().waitForMail(1, 100000);
         //String email = user+"@localhost.localdomain";
         String email = user+"@localhost.localdomain";
         String confirmationLink = findConfirmationLink(mailMessages, email); // получаем ссылку для смены пароля
