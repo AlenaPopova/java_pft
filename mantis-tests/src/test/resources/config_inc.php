@@ -9,6 +9,7 @@ $g_phpMailer_method       = PHPMAILER_METHOD_SMTP;
 $g_smtp_host              = 'localhost';
 $g_default_language       = 'english';
 
+
 $g_default_timezone       = 'Europe/Berlin';
 
 $g_crypto_master_salt     = '90cgkBvFpu3i111hv3klY8CAsCTmvGx2Ui9RttG22jI=';
