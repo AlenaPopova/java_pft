@@ -89,7 +89,8 @@ public class ContactHelper extends HelperBase {
     }
 
     private void SelectedGroupById(String id) {
-        new Select(wd.findElement(By.name("group"))).selectByValue(id);}
+        new Select(wd.findElement(By.name("group"))).selectByValue(id);
+    }
 
     public void initContactModificationById(int id) {
 
@@ -196,7 +197,8 @@ public class ContactHelper extends HelperBase {
     }
 
 
-   private Contacts contactCache = null;
+    private Contacts contactCache = null;
+
     public void deleteFromGroup(ContactData contact, GroupData group) {
         app.goTo().contactPage();
         SelectedGroupById(String.valueOf(group.getId()));
@@ -204,7 +206,7 @@ public class ContactHelper extends HelperBase {
         click(By.name("remove"));
         app.goTo().contactPage();
         SelectedGroupById("");
-       contactCache = null;
+        contactCache = null;
         app.goTo().contactPage();
     }
 
@@ -216,19 +218,26 @@ public class ContactHelper extends HelperBase {
         contactCache = null;
         app.goTo().contactPage();
     }
-   private void addContactToGroup(GroupData group) {
-       new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
-       click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
-   }
 
-    public GroupData getGroupToAddition(Groups groups, ContactData contact){
+    private void addContactToGroup(GroupData group) {
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+        click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
+    }
+
+    public GroupData getGroupToAddition(Groups groups, ContactData contact) {
         Groups beforeAdditionGroups = contact.getGroups();
-        for (GroupData group :groups) {
+        for (GroupData group : groups) {
             if (!beforeAdditionGroups.contains(group)) {
                 return group;
             }
         }
         return null;
+    }
+
+    public void addContactToGroup(int id) {
+        wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
+        click(By.cssSelector("input[name='add']"));
+
     }
 
 }
