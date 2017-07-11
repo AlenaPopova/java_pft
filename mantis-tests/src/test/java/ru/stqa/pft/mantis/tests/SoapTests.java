@@ -18,7 +18,7 @@ public class SoapTests extends TestBase{
 
     @Test
     public void testGetProjects() throws IOException, ServiceException {
-        skipIfNotFixed(1);
+        skipIfNotFixed(1); // если баг еще не исправен, то тест пропускается
         Set<Project> projects = app.soap().getProjects();
         System.out.println(projects.size());
         for (Project project : projects) {
