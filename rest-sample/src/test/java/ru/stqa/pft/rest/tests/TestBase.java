@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import static com.jayway.jsonpath.JsonPath.read;
 
 
 /**
@@ -40,7 +41,7 @@ public class TestBase {
         String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues/" + id + ".json")).returnContent().asString();
         List<String> status = read(json, "$.issues[*].state_name");
        return status.get(0);
-        return null;
+
     }
 
 
