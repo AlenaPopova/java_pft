@@ -9,4 +9,10 @@ repositories {
 dependencies {
 
     compile 'org.testng:testng:6.11'
+    compile 'org.dspace.maven.plugins:dspace-native2ascii-plugin:1.0'
+}
+
+test {
+
+    useTestNG()
 }

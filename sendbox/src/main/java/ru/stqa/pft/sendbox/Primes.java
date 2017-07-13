@@ -1,4 +1,4 @@
-package ru.stqa.pft.sendbox;
+﻿package ru.stqa.pft.sendbox;
 
 /**
  * Created by Алёна on 04.06.2017.
@@ -6,8 +6,8 @@ package ru.stqa.pft.sendbox;
 public class Primes {
 
   public static boolean isPrime(int n) {
-    for (int i = 2; i < n; i = i + 1) { //счетчик начинается с 2; условие окончания; то что происходит с переменной счетчика на каждой итерации цикла
-      if (n % i == 0) { // % - получение остатка от деления. Если остаток от деления  n на i = 0, значит остатка нет, n - не простое число
+    for (int i = 2; i < n; i = i + 1) {
+      if (n % i == 0) {
         return false;
       }
     }
@@ -16,8 +16,8 @@ public class Primes {
 
   public static boolean isPrimeFast(int n) {
     int m = (int) Math.sqrt(n);
-    for (int i = 2; i < m; i = i + 1) { //счетчик начинается с 2; условие окончания; то что происходит с переменной счетчика на каждой итерации цикла
-      if (n % i == 0) { // % - получение остатка от деления. Если остаток от деления  n на i = 0, значит остатка нет, n - не простое число
+    for (int i = 2; i < m; i = i + 1) {
+      if (n % i == 0) {
         return false;
       }
     }
@@ -26,16 +26,16 @@ public class Primes {
 
 
   public static boolean isPrimeWhile(int n) {
-    int i=2; // инициализация счетчика (счетчик начинается с 2)
-    while (i<n && n % i != 0){ //проверка условия окончания i<n И остаток от деления n на i не равен 0
-      i++; //увеличивает i на единицу (аналог i = i + 1)
+    int i=2; 
+    while (i<n && n % i != 0){ 
+      i++; 
       }
     return i==n;
     }
 
   public static boolean isPrime(long n) {
-    for (long i = 2; i < n; i = i + 1) { //счетчик начинается с 2; условие окончания; то что происходит с переменной счетчика на каждой итерации цикла
-      if (n % i == 0) { // % - получение остатка от деления. Если остаток от деления  n на i = 0, значит остатка нет, n - не простое число
+    for (long i = 2; i < n; i = i + 1) {
+      if (n % i == 0) {
         return false;
       }
     }
