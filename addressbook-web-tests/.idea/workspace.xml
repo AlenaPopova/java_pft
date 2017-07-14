@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea2ee8a-7b64-4f87-a4dc-53ca44cc6cf6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/remote.properties" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModicationTests.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/compiler.xml" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/gradle.xml" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" />
@@ -14,7 +15,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/../.idea/uiDesigner.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/DeletionContactFromGroup.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/DeletionContactFromGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/local.properties" afterPath="$PROJECT_DIR$/src/test/resources/local.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/testng-contacts.xml" afterPath="$PROJECT_DIR$/src/test/resources/testng-contacts.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -67,11 +72,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testng-contacts.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testng-contacts.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/testng-contacts.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="local.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/local.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="15" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="remote.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/remote.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="47" lean-forward="false" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -1331,6 +1366,9 @@
         <option value="$PROJECT_DIR$/../rest-sample/src/test/java/ru/stqa/pft/rest/tests/TestBase.java" />
         <option value="$PROJECT_DIR$/src/test/resources/testng-groups.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/testng-contacts.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/local.properties" />
+        <option value="$PROJECT_DIR$/src/test/resources/remote.properties" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java" />
       </list>
     </option>
   </component>
@@ -1505,6 +1543,44 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addressbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addressbook-web-tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addressbook-web-tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addressbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appmanager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1534,6 +1610,9 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\popovaa\Documents\GitHub\java_pft\addressbook-web-tests\src\test\resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ru.stqa.pft.rest.appmanager" />
       <recent name="ru.stqa.pft.rest" />
@@ -2136,30 +2215,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/stqa/pft/mantis/model/UserData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/stqa/pft/mantis/appmanager/NavigationHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/resources/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="18" column="60" lean-forward="true" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/stqa/pft/mantis/appmanager/JamesHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -2369,6 +2424,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2563,7 +2619,31 @@
     <entry file="file://$PROJECT_DIR$/src/test/resources/testng-contacts.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/remote.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="47" lean-forward="false" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="15" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
           <folding />
         </state>
       </provider>
