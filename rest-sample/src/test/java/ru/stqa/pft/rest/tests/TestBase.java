@@ -1,15 +1,11 @@
 package ru.stqa.pft.rest.tests;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.testng.SkipException;
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
 
 import static com.jayway.jsonpath.JsonPath.read;
 
@@ -21,11 +17,14 @@ public class TestBase {
 
 
     public boolean isIssueOpen(int issueId) throws IOException {
-        String status = getIssueStatus(5);
-        if (status.equals("resolved") || status.equals("closed")) {
+        String json = getExecutor().execute(Request.Get(String.format("http://demo.bugify.com/api/issues/%s.json", issueId))).returnContent().asString();
+        JsonElement parsed = new JsonParser().parse(json);
+        JsonElement issues = parsed.getAsJsonObject().get("issues").getAsJsonArray();
+        JsonElement testIssue = issues.getAsJsonArray().get(0).getAsJsonObject();
+        String issueStatus = testIssue.getAsJsonObject().get("state_name").getAsString();
+        if (issueStatus.equals("Resolved") || issueStatus.equals("Closed")) {
             return false;
         } else {
-            System.out.println("Issue still open");
             return true;
         }
     }
@@ -37,10 +36,12 @@ public class TestBase {
     }
 
 
-    protected String getIssueStatus(int id) throws IOException {
-        String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues/" + id + ".json")).returnContent().asString();
-        List<String> status = read(json, "$.issues[*].state_name");
-       return status.get(0);
+    protected int getIssueStatus() throws IOException {
+        String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues.json")).returnContent().asString();
+        JsonElement parsed = new JsonParser().parse(json);
+        JsonElement issues = parsed.getAsJsonObject().get("issues").getAsJsonArray();
+        JsonElement testIssue = issues.getAsJsonArray().get(0).getAsJsonObject();
+        return Integer.parseInt(testIssue.getAsJsonObject().get("id").getAsString());
 
     }
 
