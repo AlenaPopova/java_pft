@@ -1,4 +1,4 @@
-﻿package ru.stqa.pft.sendbox;
+package ru.stqa.pft.sendbox;
 
 /**
  * Created by Алёна on 04.06.2017.
