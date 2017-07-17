@@ -112,7 +112,7 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
-    public void create(ContactData contact, boolean creation) {
+    public void create(ContactData contact) {
         initContactCreation();
         fillContactForm(contact, true);
         submitContactCreation();
@@ -234,11 +234,7 @@ public class ContactHelper extends HelperBase {
         return null;
     }
 
-    public void addContactToGroup(int id) {
-        wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
-        click(By.cssSelector("input[name='add']"));
 
-    }
 
 }
 
