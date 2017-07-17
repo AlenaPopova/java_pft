@@ -14,3 +14,27 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
 *.log
+.idea/libraries/Gradle__com_beust_jcommander_1_72.xml
+.idea/libraries/Gradle__antlr_antlr_2_7_7.xml
+.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_2_3.xml
+.idea/libraries/Gradle__ch_qos_logback_logback_core_1_2_3.xml
+.idea/libraries/Gradle__com_fasterxml_classmate_1_3_0.xml
+.idea/libraries/Gradle__com_google_code_gson_gson_2_8_1.xml
+.idea/libraries/Gradle__com_thoughtworks_xstream_xstream_1_4_10.xml
+.idea/libraries/Gradle__dom4j_dom4j_1_6_1.xml
+.idea/libraries/Gradle__org_hibernate_hibernate_core_5_2_10_Final.xml
+.idea/libraries/Gradle__mysql_mysql_connector_java_5_1_42.xml
+.idea/libraries/Gradle__org_hamcrest_java_hamcrest_2_0_0_0.xml
+.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml
+.idea/libraries/Gradle__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml
+.idea/libraries/Gradle__org_javassist_javassist_3_20_0_GA.xml
+.idea/libraries/Gradle__org_jboss_jandex_2_0_3_Final.xml
+.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_3_0_Final.xml
+.idea/libraries/Gradle__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_0_1_Final.xml
+.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_25.xml
+.idea/libraries/Gradle__org_testng_testng_6_11.xml
+.idea/libraries/Gradle__org_testng_testng_6_11.xml
+.idea/libraries/Gradle__org_testng_testng_6_11.xml
+.idea/libraries/Gradle__xmlpull_xmlpull_1_1_3_1.xml
+.idea/libraries/Gradle__xpp3_xpp3_min_1_1_4c.xml
+.idea/libraries/Gradle__org_testng_testng_6_11.xml
